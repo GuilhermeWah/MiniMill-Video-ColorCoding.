@@ -15,7 +15,7 @@ Stakeholders
 Target Platform & Hardware
 --------------------------
 - OS: Windows 10/11
-- Laptop: i7 13th Gen, 16 GB RAM, NVIDIA GeForce GTX 1650 (NVDEC capable)
+- Laptop: i7 13th Gen, 16 GB RAM, NVIDIA GeForce GTX 1650 (NVDEC capable) -- not sure if they have a GPU, im assuming a low end one. Just for NVDEC purposes
 - Must also operate in CPU-only mode
 - Videos: 1920×1080 @ 59.94 fps (≈16.68 ms/frame)
 
@@ -59,7 +59,7 @@ Default: Ring-based auto-calibration
 - Compute px_per_mm = pixel_diameter / true_mm_diameter.
 - Advantage: no parallax/plane offset, fast, repeatable.
 
-Fallback: Two-point mini-ruler (sticker)
+Fallback: Two-point mini-ruler (sticker) (I poorly explained it earlier on the call, this is the idea)
 - Two dots exactly 50.0 mm apart briefly placed in the same plane as the beads (or held to the window).
 - Click both points → px_per_mm = pixel_distance / 50.0.
 - Parallax error if sticker is on window not bead plane; often ~1–2% which is acceptable for presentations.
@@ -76,7 +76,7 @@ Default bin thresholds (mm):
 - 10 mm: [9.0, 11.0)
 Thresholds are configurable in GUI and YAML to handle slight calibration error, bead wear, or different product lines.
 
-ROI Mask Tool (One-Time per clip/site)
+ROI Mask Tool (One-Time per clip/site) --> The area of analysis (to avoid the container of being detected)
 --------------------------------------
 Purpose: Ignore bolts, flange, wheels, hands; keep detections inside the working mill area.
 Workflow:
@@ -210,7 +210,7 @@ bench.ps1
 
 Alignment With Diagrams
 -----------------------
-- UI Visualization / UI Player ↔ ui/main_window.py (+ overlay toggles).
+- UI Visualization / UI Player ↔ ui/main_window.py (+ overlay toggles). (daniel ui later)
 - Overlay Renderer ↔ core/overlay.py (used by live player and exporter).
 - Processor Orchestrator ↔ core/orchestrator.py (one-time detection pass).
 - Frame Loader ↔ core/playback.py (PyAV decode; NVDEC→CPU).
@@ -226,11 +226,8 @@ Capture SOP (Client Standard)
 - Mask: draw ROI once; save per site.
 - Acceptance: no flicker; minimal blur; test in app—instant toggles, no drops.
 
-Claude Code – Master Prompt
+The Claude role in here 
 ---------------------------
-(Use this to generate the repo and stubs in one shot)
-[See "MASTER PROMPT" in the separate section provided in discussion; include repo layout, config, UI/UX, calibration, ROI tool, pipeline, playback/export, performance targets, implementation requirements, tests/benches.]
-
 Claude Follow-ups (order)
 -------------------------
 1) Implement processor pipeline (OpenCV) with ROI support.
