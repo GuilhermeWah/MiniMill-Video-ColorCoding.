@@ -28,6 +28,12 @@ You must proactively maintain the project documentation. **Do not wait for the u
 - **Context**: Include the context of the question (e.g., "During CLI testing...").
 - **Goal**: Build a knowledge base for future contributors so they don't have to re-ask the same questions.
 
+### 5. Session & Tuning Tracking (Efficiency Docs)
+- **`docs/session_log.md`**: Update at the **start** (context) and **end** (summary + pending) of each session.
+- **`docs/tuning_log.md`**: Update after **any vision parameter change** with before/after values and results.
+- **`docs/visual_checklist.md`**: Run and update after detection tuning, ROI changes, or calibration updates.
+- **`docs/quick_ref.md`**: Keep commands and paths current if they change.
+
 **Philosophy**: Code explains *how*, documentation explains *why*. Documentation updates are **part of the commit**, not an afterthought.
 
 ## Architecture & Data Flow
